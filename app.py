@@ -64,5 +64,15 @@ def terms():
     return render_template("terms.html")
 
 
+@app.route("/privacy")
+def privacy():
+    """Render the Privacy Policy page.
+
+    This page outlines how user data is collected, used, stored, and
+    shared within the Spendly personal expense tracking application.
+    """
+    return render_template("privacy.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
