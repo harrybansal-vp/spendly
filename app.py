@@ -50,6 +50,19 @@ def edit_expense(id):
 def delete_expense(id):
     return "Delete expense — coming in Step 9"
 
+# ------------------------------------------------------------------ #
+# Terms and Conditions Route
+# ------------------------------------------------------------------ #
+
+@app.route("/terms")
+def terms():
+    """Render the Terms and Conditions page.
+
+    This page provides generic legal information for the Spendly
+    personal expense tracking application.
+    """
+    return render_template("terms.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
