@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from database.db import init_db, seed_db, close_db
 
 app = Flask(__name__)
 
@@ -75,4 +76,16 @@ def privacy():
 
 
 if __name__ == "__main__":
+    # Initialize database and seed demo data on startup
+    with app.app_context():
+        init_db()
+        seed_db()
+    # Register teardown to close DB connections after each request
+    @app.teardown_appcontext
+    def shutdown_session(exception=None):
+        # Flask may provide a connection via g, but our app doesn't use g.
+        # We simply ensure any open connections are closed.
+        # In this simple app, we don't keep a global connection, so nothing to do.
+        pass
+
     app.run(debug=True, port=5001)
